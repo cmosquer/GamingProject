@@ -10,8 +10,8 @@ found in the LICENSE file.
 
 ============================================================================*/
 
-#include "QmitkExtWorkbenchWindowAdvisor.h"
-#include "QmitkExtActionBarAdvisor.h"
+#include "GamingExtWorkbenchWindowAdvisor.h"
+#include "GamingExtActionBarAdvisor.h"
 
 #include <QMenu>
 #include <QMenuBar>
@@ -45,7 +45,7 @@ found in the LICENSE file.
 
 #include <QmitkFileOpenAction.h>
 #include <QmitkFileSaveAction.h>
-#include <QmitkExtFileSaveProjectAction.h>
+#include <GamingExtFileSaveProjectAction.h>
 #include <QmitkFileExitAction.h>
 #include <QmitkCloseProjectAction.h>
 #include <QmitkUndoAction.h>
@@ -83,7 +83,7 @@ found in the LICENSE file.
 QmitkExtWorkbenchWindowAdvisorHack* QmitkExtWorkbenchWindowAdvisorHack::undohack =
   new QmitkExtWorkbenchWindowAdvisorHack();
 
-QString QmitkExtWorkbenchWindowAdvisor::QT_SETTINGS_FILENAME = "QtSettings.ini";
+QString GamingExtWorkbenchWindowAdvisor::QT_SETTINGS_FILENAME = "QtSettings.ini";
 
 static bool USE_EXPERIMENTAL_COMMAND_CONTRIBUTIONS = false;
 
@@ -91,7 +91,7 @@ class PartListenerForTitle: public berry::IPartListener
 {
 public:
 
-  PartListenerForTitle(QmitkExtWorkbenchWindowAdvisor* wa)
+  PartListenerForTitle(GamingExtWorkbenchWindowAdvisor* wa)
     : windowAdvisor(wa)
   {
   }
@@ -142,7 +142,7 @@ public:
   }
 
 private:
-  QmitkExtWorkbenchWindowAdvisor* windowAdvisor;
+  GamingExtWorkbenchWindowAdvisor* windowAdvisor;
 };
 
 class PartListenerForViewNavigator: public berry::IPartListener
@@ -251,7 +251,7 @@ class PerspectiveListenerForTitle: public berry::IPerspectiveListener
 {
 public:
 
-  PerspectiveListenerForTitle(QmitkExtWorkbenchWindowAdvisor* wa)
+  PerspectiveListenerForTitle(GamingExtWorkbenchWindowAdvisor* wa)
     : windowAdvisor(wa)
     , perspectivesClosed(false)
   {
@@ -379,7 +379,7 @@ public:
   }
 
 private:
-  QmitkExtWorkbenchWindowAdvisor* windowAdvisor;
+  GamingExtWorkbenchWindowAdvisor* windowAdvisor;
   bool perspectivesClosed;
 };
 
@@ -387,7 +387,7 @@ class PerspectiveListenerForMenu: public berry::IPerspectiveListener
 {
 public:
 
-  PerspectiveListenerForMenu(QmitkExtWorkbenchWindowAdvisor* wa)
+  PerspectiveListenerForMenu(GamingExtWorkbenchWindowAdvisor* wa)
     : windowAdvisor(wa)
   {
   }
@@ -418,10 +418,10 @@ public:
   }
 
 private:
-  QmitkExtWorkbenchWindowAdvisor* windowAdvisor;
+  GamingExtWorkbenchWindowAdvisor* windowAdvisor;
 };
 
-QmitkExtWorkbenchWindowAdvisor::QmitkExtWorkbenchWindowAdvisor(berry::WorkbenchAdvisor* wbAdvisor,
+GamingExtWorkbenchWindowAdvisor::GamingExtWorkbenchWindowAdvisor(berry::WorkbenchAdvisor* wbAdvisor,
                                                                berry::IWorkbenchWindowConfigurer::Pointer configurer)
   : berry::WorkbenchWindowAdvisor(configurer)
   , lastInput(nullptr)
@@ -441,15 +441,15 @@ QmitkExtWorkbenchWindowAdvisor::QmitkExtWorkbenchWindowAdvisor(berry::WorkbenchA
   viewExcludeList.push_back("org.mitk.views.viewnavigatorview");
 }
 
-QmitkExtWorkbenchWindowAdvisor::~QmitkExtWorkbenchWindowAdvisor()
+GamingExtWorkbenchWindowAdvisor::~GamingExtWorkbenchWindowAdvisor()
 {
 }
 
-berry::ActionBarAdvisor::Pointer QmitkExtWorkbenchWindowAdvisor::CreateActionBarAdvisor(berry::IActionBarConfigurer::Pointer configurer)
+berry::ActionBarAdvisor::Pointer GamingExtWorkbenchWindowAdvisor::CreateActionBarAdvisor(berry::IActionBarConfigurer::Pointer configurer)
 {
   if (USE_EXPERIMENTAL_COMMAND_CONTRIBUTIONS)
   {
-    berry::ActionBarAdvisor::Pointer actionBarAdvisor(new QmitkExtActionBarAdvisor(configurer));
+    berry::ActionBarAdvisor::Pointer actionBarAdvisor(new GamingExtActionBarAdvisor(configurer));
     return actionBarAdvisor;
   }
   else
@@ -458,7 +458,7 @@ berry::ActionBarAdvisor::Pointer QmitkExtWorkbenchWindowAdvisor::CreateActionBar
   }
 }
 
-QWidget* QmitkExtWorkbenchWindowAdvisor::CreateEmptyWindowContents(QWidget* parent)
+QWidget* GamingExtWorkbenchWindowAdvisor::CreateEmptyWindowContents(QWidget* parent)
 {
   QWidget* parentWidget = static_cast<QWidget*>(parent);
   auto   label = new QLabel(parentWidget);
@@ -470,67 +470,67 @@ QWidget* QmitkExtWorkbenchWindowAdvisor::CreateEmptyWindowContents(QWidget* pare
   return label;
 }
 
-void QmitkExtWorkbenchWindowAdvisor::ShowClosePerspectiveMenuItem(bool show)
+void GamingExtWorkbenchWindowAdvisor::ShowClosePerspectiveMenuItem(bool show)
 {
   showClosePerspectiveMenuItem = show;
 }
 
-bool QmitkExtWorkbenchWindowAdvisor::GetShowClosePerspectiveMenuItem()
+bool GamingExtWorkbenchWindowAdvisor::GetShowClosePerspectiveMenuItem()
 {
   return showClosePerspectiveMenuItem;
 }
 
-void QmitkExtWorkbenchWindowAdvisor::ShowMemoryIndicator(bool show)
+void GamingExtWorkbenchWindowAdvisor::ShowMemoryIndicator(bool show)
 {
   showMemoryIndicator = show;
 }
 
-bool QmitkExtWorkbenchWindowAdvisor::GetShowMemoryIndicator()
+bool GamingExtWorkbenchWindowAdvisor::GetShowMemoryIndicator()
 {
   return showMemoryIndicator;
 }
 
-void QmitkExtWorkbenchWindowAdvisor::ShowNewWindowMenuItem(bool show)
+void GamingExtWorkbenchWindowAdvisor::ShowNewWindowMenuItem(bool show)
 {
   showNewWindowMenuItem = show;
 }
 
-void QmitkExtWorkbenchWindowAdvisor::ShowViewToolbar(bool show)
+void GamingExtWorkbenchWindowAdvisor::ShowViewToolbar(bool show)
 {
   showViewToolbar = show;
 }
 
-void QmitkExtWorkbenchWindowAdvisor::ShowViewMenuItem(bool show)
+void GamingExtWorkbenchWindowAdvisor::ShowViewMenuItem(bool show)
 {
   showViewMenuItem = show;
 }
 
-void QmitkExtWorkbenchWindowAdvisor::ShowPerspectiveToolbar(bool show)
+void GamingExtWorkbenchWindowAdvisor::ShowPerspectiveToolbar(bool show)
 {
   showPerspectiveToolbar = show;
 }
 
-void QmitkExtWorkbenchWindowAdvisor::ShowVersionInfo(bool show)
+void GamingExtWorkbenchWindowAdvisor::ShowVersionInfo(bool show)
 {
   showVersionInfo = show;
 }
 
-void QmitkExtWorkbenchWindowAdvisor::ShowMitkVersionInfo(bool show)
+void GamingExtWorkbenchWindowAdvisor::ShowMitkVersionInfo(bool show)
 {
   showMitkVersionInfo = show;
 }
 
-void QmitkExtWorkbenchWindowAdvisor::SetProductName(const QString& product)
+void GamingExtWorkbenchWindowAdvisor::SetProductName(const QString& product)
 {
   productName = product;
 }
 
-void QmitkExtWorkbenchWindowAdvisor::SetWindowIcon(const QString& wndIcon)
+void GamingExtWorkbenchWindowAdvisor::SetWindowIcon(const QString& wndIcon)
 {
   windowIcon = wndIcon;
 }
 
-void QmitkExtWorkbenchWindowAdvisor::PostWindowCreate()
+void GamingExtWorkbenchWindowAdvisor::PostWindowCreate()
 {
   // very bad hack...
   berry::IWorkbenchWindow::Pointer window = this->GetWindowConfigurer()->GetWindow();
@@ -563,7 +563,7 @@ void QmitkExtWorkbenchWindowAdvisor::PostWindowCreate()
   fileOpenAction->setShortcut(QKeySequence::Open);
   auto fileSaveAction = new QmitkFileSaveAction(berry::QtStyleManager::ThemeIcon(basePath + "document-save.svg"), window);
   fileSaveAction->setShortcut(QKeySequence::Save);
-  fileSaveProjectAction = new QmitkExtFileSaveProjectAction(window);
+  fileSaveProjectAction = new GamingExtFileSaveProjectAction(window);
   fileSaveProjectAction->setIcon(berry::QtStyleManager::ThemeIcon(basePath + "document-save.svg"));
   closeProjectAction = new QmitkCloseProjectAction(window);
   closeProjectAction->setIcon(berry::QtStyleManager::ThemeIcon(basePath + "edit-delete.svg"));
@@ -931,7 +931,7 @@ void QmitkExtWorkbenchWindowAdvisor::PostWindowCreate()
   }
 }
 
-void QmitkExtWorkbenchWindowAdvisor::PreWindowOpen()
+void GamingExtWorkbenchWindowAdvisor::PreWindowOpen()
 {
   berry::IWorkbenchWindowConfigurer::Pointer configurer = GetWindowConfigurer();
 
@@ -958,7 +958,7 @@ void QmitkExtWorkbenchWindowAdvisor::PreWindowOpen()
   configurer->ConfigureEditorAreaDropListener(dropTargetListener.data());
 }
 
-void QmitkExtWorkbenchWindowAdvisor::PostWindowOpen()
+void GamingExtWorkbenchWindowAdvisor::PostWindowOpen()
 {
   berry::WorkbenchWindowAdvisor::PostWindowOpen();
   // Force Rendering Window Creation on startup.
@@ -978,22 +978,22 @@ void QmitkExtWorkbenchWindowAdvisor::PostWindowOpen()
   }
 }
 
-void QmitkExtWorkbenchWindowAdvisor::onIntro()
+void GamingExtWorkbenchWindowAdvisor::onIntro()
 {
   QmitkExtWorkbenchWindowAdvisorHack::undohack->onIntro();
 }
 
-void QmitkExtWorkbenchWindowAdvisor::onHelp()
+void GamingExtWorkbenchWindowAdvisor::onHelp()
 {
   QmitkExtWorkbenchWindowAdvisorHack::undohack->onHelp();
 }
 
-void QmitkExtWorkbenchWindowAdvisor::onHelpOpenHelpPerspective()
+void GamingExtWorkbenchWindowAdvisor::onHelpOpenHelpPerspective()
 {
   QmitkExtWorkbenchWindowAdvisorHack::undohack->onHelpOpenHelpPerspective();
 }
 
-void QmitkExtWorkbenchWindowAdvisor::onAbout()
+void GamingExtWorkbenchWindowAdvisor::onAbout()
 {
   QmitkExtWorkbenchWindowAdvisorHack::undohack->onAbout();
 }
@@ -1218,14 +1218,14 @@ void QmitkExtWorkbenchWindowAdvisorHack::onAbout()
   aboutDialog->open();
 }
 
-void QmitkExtWorkbenchWindowAdvisor::HookTitleUpdateListeners(berry::IWorkbenchWindowConfigurer::Pointer configurer)
+void GamingExtWorkbenchWindowAdvisor::HookTitleUpdateListeners(berry::IWorkbenchWindowConfigurer::Pointer configurer)
 {
   // hook up the listeners to update the window title
   titlePartListener.reset(new PartListenerForTitle(this));
   titlePerspectiveListener.reset(new PerspectiveListenerForTitle(this));
   editorPropertyListener.reset(new berry::PropertyChangeIntAdapter<
-    QmitkExtWorkbenchWindowAdvisor>(this,
-    &QmitkExtWorkbenchWindowAdvisor::PropertyChange));
+    GamingExtWorkbenchWindowAdvisor>(this,
+    &GamingExtWorkbenchWindowAdvisor::PropertyChange));
 
   //    configurer.getWindow().addPageListener(new IPageListener() {
   //      public void pageActivated(IWorkbenchPage page) {
@@ -1245,7 +1245,7 @@ void QmitkExtWorkbenchWindowAdvisor::HookTitleUpdateListeners(berry::IWorkbenchW
   configurer->GetWindow()->GetPartService()->AddPartListener(titlePartListener.data());
 }
 
-QString QmitkExtWorkbenchWindowAdvisor::ComputeTitle()
+QString GamingExtWorkbenchWindowAdvisor::ComputeTitle()
 {
   berry::IWorkbenchWindowConfigurer::Pointer configurer = GetWindowConfigurer();
   berry::IWorkbenchPage::Pointer currentPage = configurer->GetWindow()->GetActivePage();
@@ -1318,7 +1318,7 @@ QString QmitkExtWorkbenchWindowAdvisor::ComputeTitle()
   return title;
 }
 
-void QmitkExtWorkbenchWindowAdvisor::RecomputeTitle()
+void GamingExtWorkbenchWindowAdvisor::RecomputeTitle()
 {
   berry::IWorkbenchWindowConfigurer::Pointer configurer = GetWindowConfigurer();
   QString oldTitle = configurer->GetTitle();
@@ -1329,7 +1329,7 @@ void QmitkExtWorkbenchWindowAdvisor::RecomputeTitle()
   }
 }
 
-void QmitkExtWorkbenchWindowAdvisor::UpdateTitle(bool editorHidden)
+void GamingExtWorkbenchWindowAdvisor::UpdateTitle(bool editorHidden)
 {
   berry::IWorkbenchWindowConfigurer::Pointer configurer = GetWindowConfigurer();
   berry::IWorkbenchWindow::Pointer window = configurer->GetWindow();
@@ -1375,7 +1375,7 @@ void QmitkExtWorkbenchWindowAdvisor::UpdateTitle(bool editorHidden)
   RecomputeTitle();
 }
 
-void QmitkExtWorkbenchWindowAdvisor::PropertyChange(const berry::Object::Pointer& /*source*/, int propId)
+void GamingExtWorkbenchWindowAdvisor::PropertyChange(const berry::Object::Pointer& /*source*/, int propId)
 {
   if (propId == berry::IWorkbenchPartConstants::PROP_TITLE)
   {
@@ -1390,27 +1390,27 @@ void QmitkExtWorkbenchWindowAdvisor::PropertyChange(const berry::Object::Pointer
   }
 }
 
-void QmitkExtWorkbenchWindowAdvisor::SetPerspectiveExcludeList(const QList<QString>& v)
+void GamingExtWorkbenchWindowAdvisor::SetPerspectiveExcludeList(const QList<QString>& v)
 {
   this->perspectiveExcludeList = v;
 }
 
-QList<QString> QmitkExtWorkbenchWindowAdvisor::GetPerspectiveExcludeList()
+QList<QString> GamingExtWorkbenchWindowAdvisor::GetPerspectiveExcludeList()
 {
   return this->perspectiveExcludeList;
 }
 
-void QmitkExtWorkbenchWindowAdvisor::SetViewExcludeList(const QList<QString>& v)
+void GamingExtWorkbenchWindowAdvisor::SetViewExcludeList(const QList<QString>& v)
 {
   this->viewExcludeList = v;
 }
 
-QList<QString> QmitkExtWorkbenchWindowAdvisor::GetViewExcludeList()
+QList<QString> GamingExtWorkbenchWindowAdvisor::GetViewExcludeList()
 {
   return this->viewExcludeList;
 }
 
-void QmitkExtWorkbenchWindowAdvisor::PostWindowClose()
+void GamingExtWorkbenchWindowAdvisor::PostWindowClose()
 {
   berry::IWorkbenchWindow::Pointer window = this->GetWindowConfigurer()->GetWindow();
   QMainWindow* mainWindow = static_cast<QMainWindow*> (window->GetShell()->GetControl());
@@ -1419,7 +1419,7 @@ void QmitkExtWorkbenchWindowAdvisor::PostWindowClose()
   settings.setValue("ToolbarPosition", mainWindow->saveState());
 }
 
-QString QmitkExtWorkbenchWindowAdvisor::GetQSettingsFile() const
+QString GamingExtWorkbenchWindowAdvisor::GetQSettingsFile() const
 {
   QFileInfo settingsInfo = QmitkCommonExtPlugin::getContext()->getDataFile(QT_SETTINGS_FILENAME);
   return settingsInfo.canonicalFilePath();

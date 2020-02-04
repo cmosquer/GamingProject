@@ -10,8 +10,8 @@ found in the LICENSE file.
 
 ============================================================================*/
 
-#ifndef QMITKEXTWORKBENCHWINDOWADVISOR_H_
-#define QMITKEXTWORKBENCHWINDOWADVISOR_H_
+#ifndef GAMINGEXTWORKBENCHWINDOWADVISOR_H_
+#define GAMINGEXTWORKBENCHWINDOWADVISOR_H_
 
 #include <berryWorkbenchWindowAdvisor.h>
 
@@ -28,16 +28,16 @@ found in the LICENSE file.
 class QAction;
 class QMenu;
 
-class MITK_QT_COMMON_EXT_EXPORT QmitkExtWorkbenchWindowAdvisor : public QObject, public berry::WorkbenchWindowAdvisor
+class MITK_QT_COMMON_EXT_EXPORT GamingExtWorkbenchWindowAdvisor : public QObject, public berry::WorkbenchWindowAdvisor
 {
   Q_OBJECT
 
 public:
 
-    QmitkExtWorkbenchWindowAdvisor(berry::WorkbenchAdvisor* wbAdvisor,
+    GamingExtWorkbenchWindowAdvisor(berry::WorkbenchAdvisor* wbAdvisor,
         berry::IWorkbenchWindowConfigurer::Pointer configurer);
 
-    ~QmitkExtWorkbenchWindowAdvisor() override;
+    ~GamingExtWorkbenchWindowAdvisor() override;
 
     berry::SmartPointer<berry::ActionBarAdvisor> CreateActionBarAdvisor(
         berry::SmartPointer<berry::IActionBarConfigurer> configurer) override;
@@ -121,7 +121,7 @@ private:
   QScopedPointer<berry::IPartListener> imageNavigatorPartListener;
   QScopedPointer<berry::IPartListener> viewNavigatorPartListener;
   QScopedPointer<berry::IPropertyChangeListener> editorPropertyListener;
-  friend struct berry::PropertyChangeIntAdapter<QmitkExtWorkbenchWindowAdvisor>;
+  friend struct berry::PropertyChangeIntAdapter<GamingExtWorkbenchWindowAdvisor>;
   friend class PartListenerForTitle;
   friend class PerspectiveListenerForTitle;
   friend class PerspectiveListenerForMenu;
@@ -174,4 +174,4 @@ private:
   QAction* openMxNMultiWidgetEditorAction;
 };
 
-#endif /*QMITKEXTWORKBENCHWINDOWADVISOR_H_*/
+#endif /*GAMINGEXTWORKBENCHWINDOWADVISOR_H_*/

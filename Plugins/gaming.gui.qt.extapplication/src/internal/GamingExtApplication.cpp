@@ -10,22 +10,22 @@ found in the LICENSE file.
 
 ============================================================================*/
 
-#include "QmitkExtApplication.h"
+#include "GamingExtApplication.h"
 
 #include <berryPlatformUI.h>
 
-#include "QmitkExtAppWorkbenchAdvisor.h" //MODIFICAR
+#include "GamingExtAppWorkbenchAdvisor.h" //MODIFICAR
 
-QmitkExtApplication::QmitkExtApplication()
+GamingExtApplication::GamingExtApplication()
 {
 
 }
 
-QVariant QmitkExtApplication::Start(berry::IApplicationContext* /*context*/)
+QVariant GamingExtApplication::Start(berry::IApplicationContext* /*context*/)
 {
   QScopedPointer<berry::Display> display(berry::PlatformUI::CreateDisplay());
 
-  QScopedPointer<QmitkExtAppWorkbenchAdvisor> wbAdvisor(new QmitkExtAppWorkbenchAdvisor());
+  QScopedPointer<GamingExtAppWorkbenchAdvisor> wbAdvisor(new GamingExtAppWorkbenchAdvisor());
   int code = berry::PlatformUI::CreateAndRunWorkbench(display.data(), wbAdvisor.data());
 
   // exit the application with an appropriate return code
@@ -33,7 +33,7 @@ QVariant QmitkExtApplication::Start(berry::IApplicationContext* /*context*/)
               ? EXIT_RESTART : EXIT_OK;
 }
 
-void QmitkExtApplication::Stop()
+void GamingExtApplication::Stop()
 {
 
 }

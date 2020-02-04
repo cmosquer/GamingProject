@@ -10,8 +10,8 @@ found in the LICENSE file.
 
 ============================================================================*/
 
-#ifndef QmitkExtFileSaveProjectAction_H_
-#define QmitkExtFileSaveProjectAction_H_
+#ifndef GamingExtFileSaveProjectAction_H_
+#define GamingExtFileSaveProjectAction_H_
 
 #include <QAction>
 
@@ -23,14 +23,14 @@ namespace berry {
 struct IWorkbenchWindow;
 }
 
-class MITK_QT_COMMON_EXT_EXPORT QmitkExtFileSaveProjectAction : public QAction
+class MITK_QT_COMMON_EXT_EXPORT GamingExtFileSaveProjectAction : public QAction
 {
   Q_OBJECT
 
 public:
 
-  QmitkExtFileSaveProjectAction(berry::SmartPointer<berry::IWorkbenchWindow> window);
-  QmitkExtFileSaveProjectAction(berry::IWorkbenchWindow* window);
+  GamingExtFileSaveProjectAction(berry::SmartPointer<berry::IWorkbenchWindow> window);
+  GamingExtFileSaveProjectAction(berry::IWorkbenchWindow* window);
 
 protected slots:
 

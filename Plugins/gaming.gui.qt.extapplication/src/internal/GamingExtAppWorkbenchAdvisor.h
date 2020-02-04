@@ -10,12 +10,12 @@ found in the LICENSE file.
 
 ============================================================================*/
 
-#ifndef QMITKEXTAPPWORKBENCHADVISOR_H_
-#define QMITKEXTAPPWORKBENCHADVISOR_H_
+#ifndef GAMINGEXTAPPWORKBENCHADVISOR_H_
+#define GAMINGEXTAPPWORKBENCHADVISOR_H_
 
 #include <berryQtWorkbenchAdvisor.h>
 
-class QmitkExtAppWorkbenchAdvisor: public berry::QtWorkbenchAdvisor
+class GamingExtAppWorkbenchAdvisor: public berry::QtWorkbenchAdvisor
 {
 public:
 
@@ -30,4 +30,4 @@ public:
 
 };
 
-#endif /*QMITKEXTAPPWORKBENCHADVISOR_H_*/
+#endif /*GAMINGEXTAPPWORKBENCHADVISOR_H_*/

@@ -2,19 +2,19 @@ set(SRC_CPP_FILES
 )
 
 set(INTERNAL_CPP_FILES
-  QmitkExtApplication.cpp
-  QmitkExtApplicationPlugin.cpp
-  QmitkExtAppWorkbenchAdvisor.cpp
-  QmitkMitkWorkbenchIntroPart.cpp
+  GamingExtApplication.cpp
+  GamingExtApplicationPlugin.cpp
+  GamingExtAppWorkbenchAdvisor.cpp
+  GamingMitkWorkbenchIntroPart.cpp
   perspectives/QmitkEditorPerspective.cpp
   perspectives/QmitkExtDefaultPerspective.cpp
   perspectives/QmitkVisualizationPerspective.cpp
 )
 
 set(MOC_H_FILES
-  src/internal/QmitkExtApplication.h
-  src/internal/QmitkExtApplicationPlugin.h
-  src/internal/QmitkMitkWorkbenchIntroPart.h
+  src/internal/GamingExtApplication.h
+  src/internal/GamingExtApplicationPlugin.h
+  src/internal/GamingMitkWorkbenchIntroPart.h
   src/internal/perspectives/QmitkEditorPerspective.h
   src/internal/perspectives/QmitkExtDefaultPerspective.h
   src/internal/perspectives/QmitkVisualizationPerspective.h

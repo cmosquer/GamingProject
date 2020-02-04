@@ -1,7 +1,7 @@
 set(SRC_CPP_FILES
-  QmitkExtActionBarAdvisor.cpp
-  QmitkExtWorkbenchWindowAdvisor.cpp
-  QmitkExtFileSaveProjectAction.cpp
+  GamingExtActionBarAdvisor.cpp
+  GamingExtWorkbenchWindowAdvisor.cpp
+  GamingExtFileSaveProjectAction.cpp
   QmitkOpenDicomEditorAction.cpp
   QmitkOpenMxNMultiWidgetEditorAction.cpp
   QmitkOpenStdMultiWidgetEditorAction.cpp
@@ -22,9 +22,8 @@ set(UI_FILES
 )
 
 set(MOC_H_FILES
-  src/QmitkExtFileSaveProjectAction.h
-  src/QmitkExtWorkbenchWindowAdvisor.h
-
+  src/GamingExtFileSaveProjectAction.h
+  src/GamingExtWorkbenchWindowAdvisor.h
   src/internal/QmitkAboutHandler.h
   src/internal/QmitkAppInstancesPreferencePage.h
   src/internal/QmitkExternalProgramsPreferencePage.h

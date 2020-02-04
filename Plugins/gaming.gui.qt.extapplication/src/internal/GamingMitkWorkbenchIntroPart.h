@@ -11,8 +11,8 @@ found in the LICENSE file.
 ============================================================================*/
 
 
-#ifndef QMITKWORKBENCHINTROPART_H_
-#define QMITKWORKBENCHINTROPART_H_
+#ifndef GAMINGWORKBENCHINTROPART_H_
+#define GAMINGWORKBENCHINTROPART_H_
 
 #include <QtCore/qconfig.h>
 
@@ -46,7 +46,7 @@ found in the LICENSE file.
  * \sa QmitkWelcomePage Editor
  */
 
-class QmitkMitkWorkbenchIntroPart : public berry::QtIntroPart
+class GamingMitkWorkbenchIntroPart : public berry::QtIntroPart
 {
 
 // this is needed for all Qt objects that should have a MOC object (everything that derives from QObject)
@@ -54,8 +54,8 @@ class QmitkMitkWorkbenchIntroPart : public berry::QtIntroPart
 
 public:
 
-  QmitkMitkWorkbenchIntroPart();
- ~QmitkMitkWorkbenchIntroPart() override;
+  GamingMitkWorkbenchIntroPart();
+ ~GamingMitkWorkbenchIntroPart() override;
 
 
   void CreateQtPartControl(QWidget *parent) override;

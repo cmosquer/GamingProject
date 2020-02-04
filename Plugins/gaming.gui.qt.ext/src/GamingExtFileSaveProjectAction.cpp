@@ -10,7 +10,7 @@ found in the LICENSE file.
 
 ============================================================================*/
 
-#include "QmitkExtFileSaveProjectAction.h"
+#include "GamingExtFileSaveProjectAction.h"
 
 #include "internal/QmitkCommonExtPlugin.h"
 
@@ -34,21 +34,21 @@ found in the LICENSE file.
 #include "berryPlatform.h"
 
 
-QmitkExtFileSaveProjectAction::QmitkExtFileSaveProjectAction(berry::IWorkbenchWindow::Pointer window)
+GamingExtFileSaveProjectAction::GamingExtFileSaveProjectAction(berry::IWorkbenchWindow::Pointer window)
   : QAction(nullptr)
   , m_Window(nullptr)
 {
   this->Init(window.GetPointer());
 }
 
-QmitkExtFileSaveProjectAction::QmitkExtFileSaveProjectAction(berry::IWorkbenchWindow* window)
+GamingExtFileSaveProjectAction::GamingExtFileSaveProjectAction(berry::IWorkbenchWindow* window)
   : QAction(nullptr)
   , m_Window(nullptr)
 {
   this->Init(window);
 }
 
-void QmitkExtFileSaveProjectAction::Init(berry::IWorkbenchWindow* window)
+void GamingExtFileSaveProjectAction::Init(berry::IWorkbenchWindow* window)
 {
   m_Window = window;
   this->setText("&Save Project...");
@@ -58,7 +58,7 @@ void QmitkExtFileSaveProjectAction::Init(berry::IWorkbenchWindow* window)
 }
 
 
-void QmitkExtFileSaveProjectAction::Run()
+void GamingExtFileSaveProjectAction::Run()
 {
   try
   {

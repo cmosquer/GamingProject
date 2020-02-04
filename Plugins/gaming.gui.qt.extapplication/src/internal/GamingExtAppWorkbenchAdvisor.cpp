@@ -10,16 +10,16 @@ found in the LICENSE file.
 
 ============================================================================*/
 
-#include "QmitkExtAppWorkbenchAdvisor.h"
-#include "internal/QmitkExtApplicationPlugin.h"
+#include "GamingExtAppWorkbenchAdvisor.h"
+#include "internal/GamingExtApplicationPlugin.h"
 
 #include <QmitkExtWorkbenchWindowAdvisor.h>
 
-const QString QmitkExtAppWorkbenchAdvisor::DEFAULT_PERSPECTIVE_ID =
+const QString GamingExtAppWorkbenchAdvisor::DEFAULT_PERSPECTIVE_ID =
     "org.mitk.extapp.defaultperspective";
 
 void
-QmitkExtAppWorkbenchAdvisor::Initialize(berry::IWorkbenchConfigurer::Pointer configurer)
+GamingExtAppWorkbenchAdvisor::Initialize(berry::IWorkbenchConfigurer::Pointer configurer)
 {
   berry::QtWorkbenchAdvisor::Initialize(configurer);
 
@@ -27,7 +27,7 @@ QmitkExtAppWorkbenchAdvisor::Initialize(berry::IWorkbenchConfigurer::Pointer con
 }
 
 berry::WorkbenchWindowAdvisor*
-QmitkExtAppWorkbenchAdvisor::CreateWorkbenchWindowAdvisor(
+GamingExtAppWorkbenchAdvisor::CreateWorkbenchWindowAdvisor(
         berry::IWorkbenchWindowConfigurer::Pointer configurer)
 {
   QmitkExtWorkbenchWindowAdvisor* advisor = new
@@ -51,7 +51,7 @@ QmitkExtAppWorkbenchAdvisor::CreateWorkbenchWindowAdvisor(
   //return new QmitkExtWorkbenchWindowAdvisor(this, configurer);
 }
 
-QString QmitkExtAppWorkbenchAdvisor::GetInitialWindowPerspectiveId()
+QString GamingExtAppWorkbenchAdvisor::GetInitialWindowPerspectiveId()
 {
   return DEFAULT_PERSPECTIVE_ID;
 }

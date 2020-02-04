@@ -10,23 +10,23 @@ found in the LICENSE file.
 
 ============================================================================*/
 
-#ifndef QMITKEXTAPPLICATION_H_
-#define QMITKEXTAPPLICATION_H_
+#ifndef GAMINGEXTAPPLICATION_H_
+#define GAMINGEXTAPPLICATION_H_
 
 #include <berryIApplication.h>
 
 
-class QmitkExtApplication : public QObject, public berry::IApplication
+class GamingExtApplication : public QObject, public berry::IApplication
 {
   Q_OBJECT
   Q_INTERFACES(berry::IApplication)
 
 public:
 
-  QmitkExtApplication();
+  GamingExtApplication();
 
   QVariant Start(berry::IApplicationContext* context) override;
   void Stop() override;
 };
 
-#endif /*QMITKEXTAPPLICATION_H_*/
+#endif /*GAMINGEXTAPPLICATION_H_*/

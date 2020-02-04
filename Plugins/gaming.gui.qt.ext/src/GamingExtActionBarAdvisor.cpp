@@ -10,11 +10,11 @@ found in the LICENSE file.
 
 ============================================================================*/
 
-#include "QmitkExtActionBarAdvisor.h"
+#include "GamingExtActionBarAdvisor.h"
 
 #include "QmitkFileOpenAction.h"
 #include "QmitkFileSaveAction.h"
-#include "QmitkExtFileSaveProjectAction.h"
+#include "GamingExtFileSaveProjectAction.h"
 #include "QmitkCloseProjectAction.h"
 #include <QmitkFileExitAction.h>
 
@@ -35,13 +35,13 @@ found in the LICENSE file.
 #include <berrySeparator.h>
 #include <berryWorkbenchActionConstants.h>
 
-QmitkExtActionBarAdvisor::QmitkExtActionBarAdvisor(berry::IActionBarConfigurer::Pointer configurer)
+GamingExtActionBarAdvisor::GamingExtActionBarAdvisor(berry::IActionBarConfigurer::Pointer configurer)
  : berry::ActionBarAdvisor(configurer)
 {
   window = configurer->GetWindowConfigurer()->GetWindow().GetPointer();
 }
 
-void QmitkExtActionBarAdvisor::MakeActions(berry::IWorkbenchWindow* window)
+void GamingExtActionBarAdvisor::MakeActions(berry::IWorkbenchWindow* window)
 {
   QAction* fileOpenAction = new QmitkFileOpenAction(
                               QIcon::fromTheme("document-open",
@@ -56,7 +56,7 @@ void QmitkExtActionBarAdvisor::MakeActions(berry::IWorkbenchWindow* window)
   fileSaveAction->setShortcut(QKeySequence::Save);
   this->Register(fileSaveAction, berry::IWorkbenchCommandConstants::FILE_SAVE);
 
-  QAction* fileSaveProjectAction = new QmitkExtFileSaveProjectAction(window);
+  QAction* fileSaveProjectAction = new GamingExtFileSaveProjectAction(window);
   fileSaveProjectAction->setIcon(QIcon::fromTheme("document-save",
                                                   QIcon(":/org_mitk_icons/icons/tango/scalable/actions/document-save.svg")));
   this->Register(fileSaveProjectAction, mitk::WorkbenchCommandConstants::PROJECT_SAVE);
@@ -72,7 +72,7 @@ void QmitkExtActionBarAdvisor::MakeActions(berry::IWorkbenchWindow* window)
   this->Register(fileExitAction, mitk::WorkbenchCommandConstants::FILE_EXIT);
 }
 
-void QmitkExtActionBarAdvisor::FillMenuBar(berry::IMenuManager* menuBar)
+void GamingExtActionBarAdvisor::FillMenuBar(berry::IMenuManager* menuBar)
 {
   menuBar->Add(CreateFileMenu());
   menuBar->Add(CreateEditMenu());
@@ -81,11 +81,11 @@ void QmitkExtActionBarAdvisor::FillMenuBar(berry::IMenuManager* menuBar)
   menuBar->Add(CreateHelpMenu());
 }
 
-void QmitkExtActionBarAdvisor::FillToolBar(berry::IToolBarManager* /*toolBar*/)
+void GamingExtActionBarAdvisor::FillToolBar(berry::IToolBarManager* /*toolBar*/)
 {
 }
 
-berry::SmartPointer<berry::MenuManager> QmitkExtActionBarAdvisor::CreateFileMenu()
+berry::SmartPointer<berry::MenuManager> GamingExtActionBarAdvisor::CreateFileMenu()
 {
   berry::MenuManager::Pointer menu(new berry::MenuManager("&File",
                                                           berry::WorkbenchActionConstants::M_FILE));
@@ -148,7 +148,7 @@ berry::SmartPointer<berry::MenuManager> QmitkExtActionBarAdvisor::CreateFileMenu
   return menu;
 }
 
-berry::SmartPointer<berry::MenuManager> QmitkExtActionBarAdvisor::CreateEditMenu()
+berry::SmartPointer<berry::MenuManager> GamingExtActionBarAdvisor::CreateEditMenu()
 {
   berry::MenuManager::Pointer menu(new berry::MenuManager("&Edit",
                                                           berry::WorkbenchActionConstants::M_EDIT));
@@ -184,7 +184,7 @@ berry::SmartPointer<berry::MenuManager> QmitkExtActionBarAdvisor::CreateEditMenu
   return menu;
 }
 
-berry::SmartPointer<berry::MenuManager> QmitkExtActionBarAdvisor::CreateHelpMenu()
+berry::SmartPointer<berry::MenuManager> GamingExtActionBarAdvisor::CreateHelpMenu()
 {
   berry::MenuManager::Pointer menu(new berry::MenuManager("&Help",
                                                           berry::WorkbenchActionConstants::M_HELP));
@@ -214,7 +214,7 @@ berry::SmartPointer<berry::MenuManager> QmitkExtActionBarAdvisor::CreateHelpMenu
   return menu;
 }
 
-berry::MenuManager::Pointer QmitkExtActionBarAdvisor::CreateWindowMenu()
+berry::MenuManager::Pointer GamingExtActionBarAdvisor::CreateWindowMenu()
 {
   berry::MenuManager::Pointer menu(new berry::MenuManager("&Window",
                                                           berry::WorkbenchActionConstants::M_WINDOW));
@@ -244,7 +244,7 @@ berry::MenuManager::Pointer QmitkExtActionBarAdvisor::CreateWindowMenu()
   return menu;
 }
 
-void QmitkExtActionBarAdvisor::AddPerspectiveActions(berry::MenuManager* menu)
+void GamingExtActionBarAdvisor::AddPerspectiveActions(berry::MenuManager* menu)
 {
   {
     berry::MenuManager::Pointer changePerspMenuMgr(new berry::MenuManager("Open Perspective", "openPerspective"));
@@ -268,7 +268,7 @@ void QmitkExtActionBarAdvisor::AddPerspectiveActions(berry::MenuManager* menu)
   menu->Add(GetItem(berry::IWorkbenchCommandConstants::WINDOW_CLOSE_ALL_PERSPECTIVES, "Close All Perspectives"));
 }
 
-berry::SmartPointer<berry::IContributionItem> QmitkExtActionBarAdvisor::GetItem(const QString& commandId, const QString& label,
+berry::SmartPointer<berry::IContributionItem> GamingExtActionBarAdvisor::GetItem(const QString& commandId, const QString& label,
                                                                                 const QString& tooltip, const QIcon& icon, const QKeySequence& shortcut)
 {
   berry::CommandContributionItemParameter::Pointer param(

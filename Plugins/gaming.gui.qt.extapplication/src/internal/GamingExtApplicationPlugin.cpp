@@ -10,12 +10,12 @@ found in the LICENSE file.
 
 ============================================================================*/
 
-#include "QmitkExtApplicationPlugin.h"
+#include "GamingExtApplicationPlugin.h"
 #include "perspectives/QmitkExtDefaultPerspective.h"
 #include "perspectives/QmitkEditorPerspective.h"
 #include "perspectives/QmitkVisualizationPerspective.h"
-#include "QmitkMitkWorkbenchIntroPart.h"
-#include "QmitkExtApplication.h"
+#include "GamingMitkWorkbenchIntroPart.h"
+#include "GamingExtApplication.h"
 
 #include <mitkVersion.h>
 #include <mitkLogMacros.h>
@@ -26,23 +26,23 @@ found in the LICENSE file.
 #include <QFileInfo>
 #include <QDateTime>
 
-QmitkExtApplicationPlugin* QmitkExtApplicationPlugin::inst = nullptr;
+GamingExtApplicationPlugin* GamingExtApplicationPlugin::inst = nullptr;
 
-QmitkExtApplicationPlugin::QmitkExtApplicationPlugin()
+GamingExtApplicationPlugin::GamingExtApplicationPlugin()
 {
   inst = this;
 }
 
-QmitkExtApplicationPlugin::~QmitkExtApplicationPlugin()
+GamingExtApplicationPlugin::~GamingExtApplicationPlugin()
 {
 }
 
-QmitkExtApplicationPlugin* QmitkExtApplicationPlugin::GetDefault()
+GamingExtApplicationPlugin* GamingExtApplicationPlugin::GetDefault()
 {
   return inst;
 }
 
-void QmitkExtApplicationPlugin::start(ctkPluginContext* context)
+void GamingExtApplicationPlugin::start(ctkPluginContext* context)
 {
   berry::AbstractUICTKPlugin::start(context);
 
@@ -50,8 +50,8 @@ void QmitkExtApplicationPlugin::start(ctkPluginContext* context)
 
   BERRY_REGISTER_EXTENSION_CLASS(QmitkExtDefaultPerspective, context);
   BERRY_REGISTER_EXTENSION_CLASS(QmitkEditorPerspective, context);
-  BERRY_REGISTER_EXTENSION_CLASS(QmitkMitkWorkbenchIntroPart, context);
-  BERRY_REGISTER_EXTENSION_CLASS(QmitkExtApplication, context);
+  BERRY_REGISTER_EXTENSION_CLASS(GamingMitkWorkbenchIntroPart, context);
+  BERRY_REGISTER_EXTENSION_CLASS(GamingExtApplication, context);
   BERRY_REGISTER_EXTENSION_CLASS(QmitkVisualizationPerspective, context);
 
 
@@ -77,7 +77,7 @@ void QmitkExtApplicationPlugin::start(ctkPluginContext* context)
   }
 }
 
-ctkPluginContext* QmitkExtApplicationPlugin::GetPluginContext() const
+ctkPluginContext* GamingExtApplicationPlugin::GetPluginContext() const
 {
   return context;
 }

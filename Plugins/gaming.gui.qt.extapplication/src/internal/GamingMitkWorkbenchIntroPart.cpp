@@ -10,7 +10,7 @@ found in the LICENSE file.
 
 ============================================================================*/
 
-#include "QmitkMitkWorkbenchIntroPart.h"
+#include "GamingMitkWorkbenchIntroPart.h"
 
 #include <berryIWorkbenchWindow.h>
 #include <berryIWorkbench.h>
@@ -42,7 +42,7 @@ found in the LICENSE file.
 #include <QByteArray>
 #include <QDesktopServices>
 
-#include "QmitkExtApplicationPlugin.h"
+#include "GamingExtApplicationPlugin.h"
 #include "mitkDataStorageEditorInput.h"
 #include <string>
 
@@ -50,7 +50,7 @@ found in the LICENSE file.
 #include <QWebEnginePage>
 #include <QUrlQuery>
 
-class QmitkMitkWorkbenchIntroPart::Impl
+class GamingMitkWorkbenchIntroPart::Impl
 {
 public:
   Impl()
@@ -74,16 +74,16 @@ namespace
   class QmitkWebEnginePage final : public QWebEnginePage
   {
   public:
-    explicit QmitkWebEnginePage(QmitkMitkWorkbenchIntroPart* introPart, QObject* parent = nullptr);
+    explicit QmitkWebEnginePage(GamingMitkWorkbenchIntroPart* introPart, QObject* parent = nullptr);
     ~QmitkWebEnginePage() override;
 
   private:
     bool acceptNavigationRequest(const QUrl& url, NavigationType type, bool isMainFrame) override;
 
-    QmitkMitkWorkbenchIntroPart* m_IntroPart;
+    GamingMitkWorkbenchIntroPart* m_IntroPart;
   };
 
-  QmitkWebEnginePage::QmitkWebEnginePage(QmitkMitkWorkbenchIntroPart* introPart, QObject* parent)
+  QmitkWebEnginePage::QmitkWebEnginePage(GamingMitkWorkbenchIntroPart* introPart, QObject* parent)
     : QWebEnginePage(parent),
       m_IntroPart(introPart)
   {
@@ -112,7 +112,7 @@ namespace
 
         workbench->ShowPerspective(id, workbenchWindow);
 
-        auto context = QmitkExtApplicationPlugin::GetDefault()->GetPluginContext();
+        auto context = GamingExtApplicationPlugin::GetDefault()->GetPluginContext();
         auto serviceReference = context->getServiceReference<mitk::IDataStorageService>();
 
         mitk::IDataStorageService* service = serviceReference
@@ -144,27 +144,27 @@ namespace
   }
 }
 
-QmitkMitkWorkbenchIntroPart::QmitkMitkWorkbenchIntroPart()
+GamingMitkWorkbenchIntroPart::GamingMitkWorkbenchIntroPart()
   : m_Controls(nullptr),
     m_Impl(new Impl)
 {
-  berry::IPreferences::Pointer workbenchPrefs = QmitkExtApplicationPlugin::GetDefault()->GetPreferencesService()->GetSystemPreferences();
+  berry::IPreferences::Pointer workbenchPrefs = GamingExtApplicationPlugin::GetDefault()->GetPreferencesService()->GetSystemPreferences();
   workbenchPrefs->PutBool(berry::WorkbenchPreferenceConstants::SHOW_INTRO, true);
   workbenchPrefs->Flush();
 }
 
-QmitkMitkWorkbenchIntroPart::~QmitkMitkWorkbenchIntroPart()
+GamingMitkWorkbenchIntroPart::~GamingMitkWorkbenchIntroPart()
 {
   // if the workbench is not closing (that means, welcome screen was closed explicitly), set "Show_intro" false
   if (!this->GetIntroSite()->GetPage()->GetWorkbenchWindow()->GetWorkbench()->IsClosing())
   {
-    berry::IPreferences::Pointer workbenchPrefs = QmitkExtApplicationPlugin::GetDefault()->GetPreferencesService()->GetSystemPreferences();
+    berry::IPreferences::Pointer workbenchPrefs = GamingExtApplicationPlugin::GetDefault()->GetPreferencesService()->GetSystemPreferences();
     workbenchPrefs->PutBool(berry::WorkbenchPreferenceConstants::SHOW_INTRO, false);
     workbenchPrefs->Flush();
   }
   else
   {
-    berry::IPreferences::Pointer workbenchPrefs = QmitkExtApplicationPlugin::GetDefault()->GetPreferencesService()->GetSystemPreferences();
+    berry::IPreferences::Pointer workbenchPrefs = GamingExtApplicationPlugin::GetDefault()->GetPreferencesService()->GetSystemPreferences();
     workbenchPrefs->PutBool(berry::WorkbenchPreferenceConstants::SHOW_INTRO, true);
     workbenchPrefs->Flush();
   }
@@ -183,7 +183,7 @@ QmitkMitkWorkbenchIntroPart::~QmitkMitkWorkbenchIntroPart()
   delete m_Impl;
 }
 
-void QmitkMitkWorkbenchIntroPart::CreateQtPartControl(QWidget* parent)
+void GamingMitkWorkbenchIntroPart::CreateQtPartControl(QWidget* parent)
 {
   if (!m_Controls)
   {
@@ -207,14 +207,14 @@ void QmitkMitkWorkbenchIntroPart::CreateQtPartControl(QWidget* parent)
   }
 }
 
-void QmitkMitkWorkbenchIntroPart::CreateConnections()
+void GamingMitkWorkbenchIntroPart::CreateConnections()
 {
 }
 
-void QmitkMitkWorkbenchIntroPart::StandbyStateChanged(bool /*standby*/)
+void GamingMitkWorkbenchIntroPart::StandbyStateChanged(bool /*standby*/)
 {
 }
 
-void QmitkMitkWorkbenchIntroPart::SetFocus()
+void GamingMitkWorkbenchIntroPart::SetFocus()
 {
 }

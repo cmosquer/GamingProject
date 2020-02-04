@@ -11,14 +11,14 @@ found in the LICENSE file.
 ============================================================================*/
 
 
-#ifndef QMITKEXTAPPLICATIONPLUGIN_H_
-#define QMITKEXTAPPLICATIONPLUGIN_H_
+#ifndef GAMINGEXTAPPLICATIONPLUGIN_H_
+#define GAMINGEXTAPPLICATIONPLUGIN_H_
 
 #include <berryAbstractUICTKPlugin.h>
 
 #include <QString>
 
-class QmitkExtApplicationPlugin : public berry::AbstractUICTKPlugin
+class GamingExtApplicationPlugin : public berry::AbstractUICTKPlugin
 {
   Q_OBJECT
   Q_PLUGIN_METADATA(IID "gaming_gui_qt_extapplication")
@@ -26,10 +26,10 @@ class QmitkExtApplicationPlugin : public berry::AbstractUICTKPlugin
 
 public:
 
-  QmitkExtApplicationPlugin();
-  ~QmitkExtApplicationPlugin() override;
+  GamingExtApplicationPlugin();
+  ~GamingExtApplicationPlugin() override;
 
-  static QmitkExtApplicationPlugin* GetDefault();
+  static GamingExtApplicationPlugin* GetDefault();
 
   ctkPluginContext* GetPluginContext() const;
 
@@ -39,9 +39,9 @@ public:
 
 private:
 
-  static QmitkExtApplicationPlugin* inst;
+  static GamingExtApplicationPlugin* inst;
 
   ctkPluginContext* context;
 };
 
-#endif /* QMITKEXTAPPLICATIONPLUGIN_H_ */
+#endif /* GAMINGEXTAPPLICATIONPLUGIN_H_ */

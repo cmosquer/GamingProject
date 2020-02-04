@@ -3,7 +3,7 @@
 <plugin>
   <extension id="gaming.gui.qt.extapplication" point="org.blueberry.osgi.applications">
     <application>
-      <run class="QmitkExtApplication"/>
+      <run class="GamingExtApplication"/>
     </application>
   </extension>
 

@@ -10,8 +10,8 @@ found in the LICENSE file.
 
 ============================================================================*/
 
-#ifndef QMITKEXTACTIONBARADVISOR_H_
-#define QMITKEXTACTIONBARADVISOR_H_
+#ifndef GAMINGEXTACTIONBARADVISOR_H_
+#define GAMINGEXTACTIONBARADVISOR_H_
 
 #include <berryActionBarAdvisor.h>
 
@@ -29,11 +29,11 @@ class MenuManager;
 
 }
 
-class MITK_QT_COMMON_EXT_EXPORT QmitkExtActionBarAdvisor : public berry::ActionBarAdvisor
+class MITK_QT_COMMON_EXT_EXPORT GamingExtActionBarAdvisor : public berry::ActionBarAdvisor
 {
 public:
 
-  QmitkExtActionBarAdvisor(berry::SmartPointer<berry::IActionBarConfigurer> configurer);
+  GamingExtActionBarAdvisor(berry::SmartPointer<berry::IActionBarConfigurer> configurer);
 
 protected:
 
@@ -78,4 +78,4 @@ private:
   berry::IWorkbenchWindow* window;
 };
 
-#endif /*QMITKEXTACTIONBARADVISOR_H_*/
+#endif /*GAMINGEXTACTIONBARADVISOR_H_*/
