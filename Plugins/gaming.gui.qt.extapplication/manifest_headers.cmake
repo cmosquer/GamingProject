@@ -1,0 +1,5 @@
+set(Plugin-Name "Gaming")
+set(Plugin-Version "1.0.0")
+set(Plugin-Vendor "IUHI")
+set(Plugin-ContactAddress "http://www.mitk.org")
+set(Require-Plugin org.mitk.gui.qt.ext)
