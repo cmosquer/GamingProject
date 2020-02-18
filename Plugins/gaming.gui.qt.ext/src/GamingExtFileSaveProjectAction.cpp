@@ -60,6 +60,8 @@ void GamingExtFileSaveProjectAction::Init(berry::IWorkbenchWindow* window)
 
 void GamingExtFileSaveProjectAction::Run()
 {
+  std::cout<<"\n\nEXECUTING GAMING EXTERNAL FILE SAVE PROJECT ACTION!!!!!\n\n"<<std::endl;
+
   try
   {
     /**

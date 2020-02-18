@@ -24,7 +24,7 @@ GamingExtApplication::GamingExtApplication()
 QVariant GamingExtApplication::Start(berry::IApplicationContext* /*context*/)
 {
   QScopedPointer<berry::Display> display(berry::PlatformUI::CreateDisplay());
-
+  std::cout<<"EXECUTING GAMING EXTERNAL APPLICATION"<<std::endl;
   QScopedPointer<GamingExtAppWorkbenchAdvisor> wbAdvisor(new GamingExtAppWorkbenchAdvisor());
   int code = berry::PlatformUI::CreateAndRunWorkbench(display.data(), wbAdvisor.data());
 

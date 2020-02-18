@@ -13,7 +13,7 @@ found in the LICENSE file.
 #include "GamingExtAppWorkbenchAdvisor.h"
 #include "internal/GamingExtApplicationPlugin.h"
 
-#include <QmitkExtWorkbenchWindowAdvisor.h>
+#include <GamingExtWorkbenchWindowAdvisor.h>
 
 const QString GamingExtAppWorkbenchAdvisor::DEFAULT_PERSPECTIVE_ID =
     "org.mitk.extapp.defaultperspective";
@@ -22,6 +22,7 @@ void
 GamingExtAppWorkbenchAdvisor::Initialize(berry::IWorkbenchConfigurer::Pointer configurer)
 {
   berry::QtWorkbenchAdvisor::Initialize(configurer);
+  std::cout<<"INITIALIZING GAMING EXTERNAL WORKBENCH ADVISOR"<<std::endl;
 
   configurer->SetSaveAndRestore(true);
 }
@@ -30,8 +31,8 @@ berry::WorkbenchWindowAdvisor*
 GamingExtAppWorkbenchAdvisor::CreateWorkbenchWindowAdvisor(
         berry::IWorkbenchWindowConfigurer::Pointer configurer)
 {
-  QmitkExtWorkbenchWindowAdvisor* advisor = new
-    QmitkExtWorkbenchWindowAdvisor(this, configurer);
+  GamingExtWorkbenchWindowAdvisor* advisor = new
+    GamingExtWorkbenchWindowAdvisor(this, configurer);
 
   // Exclude the help perspective from org.blueberry.ui.qt.help from
   // the normal perspective list.
@@ -45,6 +46,7 @@ GamingExtAppWorkbenchAdvisor::CreateWorkbenchWindowAdvisor(
   excludeViews.push_back("org.mitk.views.modules");
   excludeViews.push_back( "org.blueberry.ui.internal.introview" );
   advisor->SetViewExcludeList(excludeViews);
+  std::cout<<"CREATING GAMING EXTERNAL WORKBENCH ADVISOR"<<std::endl;
 
   advisor->SetWindowIcon(":/gaming.gui.qt.extapplication/icon.png");
   return advisor;
