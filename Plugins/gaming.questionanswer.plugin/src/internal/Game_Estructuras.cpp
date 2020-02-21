@@ -59,6 +59,7 @@ See LICENSE.txt or http://www.mitk.org for details.
 #include <mitkNodePredicateDataType.h>
 #include <mitkGeometryData.h>
 #include <mitkIOUtil.h>
+#include <mitkNodePredicateProperty.h>
 
 #define INICIO 0
 #define CARGADO 1
@@ -856,6 +857,11 @@ void Game_Estructuras::mostrarItem(int numeroPregunta, int numeroItem)
 
       }
     }
+
+    mitk::TimeGeometry::ConstPointer geo = GetDataStorage()->ComputeVisibleBoundingGeometry3D();
+
+
+    mitk::RenderingManager::GetInstance()->InitializeViews(geo);
     mitk::RenderingManager::GetInstance()->RequestUpdateAll();
 
 }
@@ -905,6 +911,8 @@ int Game_Estructuras::onSimpleConfirmarPreg()
         gd->SetVtkPolyData(point);
         nuevapregunta->SetData(gd);
         nuevapregunta->SetBoolProperty("medicas.gaming.isQuestion", true);
+        nuevapregunta->SetBoolProperty("helper object", true);
+
         //nuevapregunta->SetProperty("helper object", mitk::BoolProperty::New(true));
         GetDataStorage()->Add(nuevapregunta);
 
@@ -1053,7 +1061,7 @@ int Game_Estructuras::simpleAgregarOpcion()
        nuevarespuesta->SetData(gd);
        nuevarespuesta->SetVisibility(false);
        nuevarespuesta->SetBoolProperty("medicas.gaming.isQuestion", false);
-
+       nuevarespuesta->SetBoolProperty("helper object", true);
        nuevarespuesta->SetIntProperty("medicas.gaming.itemNumber", N_items);
        nuevarespuesta->SetIntProperty("medicas.gaming.optionNumber",N_options[N_items-1]);
        //nuevarespuesta->SetProperty("helper object", mitk::BoolProperty::New(true));

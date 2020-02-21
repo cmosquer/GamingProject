@@ -21,6 +21,7 @@ found in the LICENSE file.
 #include <mitkSceneIO.h>
 #include <mitkProgressBar.h>
 #include <mitkNodePredicateNot.h>
+#include <mitkNodePredicateOr.h>
 #include <mitkNodePredicateProperty.h>
 #include <mitkProperties.h>
 
@@ -119,7 +120,10 @@ void GamingExtFileSaveProjectAction::Run()
     /* Build list of nodes that should be saved */
     mitk::NodePredicateNot::Pointer isNotHelperObject =
         mitk::NodePredicateNot::New(mitk::NodePredicateProperty::New("helper object", mitk::BoolProperty::New(true)));
-    mitk::DataStorage::SetOfObjects::ConstPointer nodesToBeSaved = storage->GetSubset(isNotHelperObject);
+
+    mitk::NodePredicateOr::Pointer shouldBeSaved =
+        mitk::NodePredicateOr::New(mitk::NodePredicateProperty::New("medicas.gaming.isQuestion"),isNotHelperObject);
+    mitk::DataStorage::SetOfObjects::ConstPointer nodesToBeSaved = storage->GetSubset(shouldBeSaved);
     if ( !sceneIO->SaveScene( nodesToBeSaved, storage, fileName.toStdString() ) )
     {
       QMessageBox::information(nullptr,

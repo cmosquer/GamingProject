@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.11.0, 2020-02-04T18:49:34. -->
+<!-- Written by QtCreator 4.11.1, 2020-02-18T18:09:42. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -74,6 +74,7 @@
      <value type="QString">CMAKE_CXX_COMPILER:FILEPATH=/usr/bin/c++</value>
      <value type="QString">CMAKE_C_COMPILER:FILEPATH=/usr/bin/cc</value>
      <value type="QString">CMAKE_PREFIX_PATH:PATH=</value>
+     <value type="QString">MITK_DIR:STRING=/home/dis/work/bin/MITK-release/MITK-build</value>
      <value type="QString">QT_QMAKE_EXECUTABLE:STRING=%{Qt:qmakeExecutable}</value>
     </valuelist>
     <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/home/dis/work/bin/GamingProject-release-debug</value>
@@ -197,7 +198,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory"></value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/home/dis/work/bin/GamingProject-release-debug/bin</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default"></value>
    </valuemap>
    <value type="int" key="ProjectExplorer.Target.RunConfigurationCount">1</value>
   </valuemap>
